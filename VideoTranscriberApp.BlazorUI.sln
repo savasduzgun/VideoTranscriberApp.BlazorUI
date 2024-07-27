@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTranscriberApp.BlazorUI", "VideoTranscriberApp.BlazorUI\VideoTranscriberApp.BlazorUI\VideoTranscriberApp.BlazorUI.csproj", "{FA91EDAA-A2DA-4190-AFE1-783579973EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTranscriberApp.BlazorUI.Client", "VideoTranscriberApp.BlazorUI\VideoTranscriberApp.BlazorUI.Client\VideoTranscriberApp.BlazorUI.Client.csproj", "{40A719B5-73AC-4AE7-90CB-02B22673F4E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA91EDAA-A2DA-4190-AFE1-783579973EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA91EDAA-A2DA-4190-AFE1-783579973EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA91EDAA-A2DA-4190-AFE1-783579973EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA91EDAA-A2DA-4190-AFE1-783579973EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A719B5-73AC-4AE7-90CB-02B22673F4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A719B5-73AC-4AE7-90CB-02B22673F4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A719B5-73AC-4AE7-90CB-02B22673F4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A719B5-73AC-4AE7-90CB-02B22673F4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2105917-EB7F-48D7-9303-4D21A651F765}
+	EndGlobalSection
+EndGlobal
