@@ -6,7 +6,7 @@
 @using System.Text.Json
 @using VideoTranscriberApp.BlazorUI.Client.Enums
 @using VideoTranscriberApp.BlazorUI.Models
-@using VideoTranscriberApp.BlazorUI.Sevices
+@using VideoTranscriberApp.BlazorUI.Services
 @using static VideoTranscriberApp.BlazorUI.Client.Pages.WasmTranscribe
 
 @inject TranscriptionManager TranscriptionManager
@@ -87,7 +87,7 @@
     private bool IsUploading { get; set; } = false;
     private string ErrorMessage { get; set; } = string.Empty;
     private string SuccessMessage { get; set; } = string.Empty;
-    private List<TranscriptionModel> Transcriptions { get; set; } = [];
+    private List<Models.TranscriptionModel> Transcriptions { get; set; } = [];
 
     // private async Task UploadVideo()
     // {
