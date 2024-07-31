@@ -3,10 +3,10 @@ using OpenAI.Interfaces;
 using OpenAI.ObjectModels;
 using OpenAI.ObjectModels.RequestModels;
 using Xabe.FFmpeg;
-using YA.VideoTranscriberApp.BlazorUI.Models;
+using VideoTranscriberApp.BlazorUI.Models;
 using static VideoTranscriberApp.BlazorUI.Client.Pages.WasmTranscribe;
 
-namespace YA.VideoTranscriberApp.BlazorUI.Controllers
+namespace VideoTranscriberApp.BlazorUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
