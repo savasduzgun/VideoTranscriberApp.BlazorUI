@@ -1,5 +1,5 @@
 ﻿@using VideoTranscriberApp.BlazorUI.Client.Enums
-<button type="@Type" class="@GetCssClass()" style="@CssStyles" @onclick="@(() => OnClick.InvokeAsync())">
+<button type="@Type" class="@GetCssClass" style="@CssStyles" disabled="@(IsDisabled)" @onclick="@(() => OnClick.InvokeAsync())">
     @Text
 </button>
 
@@ -25,27 +25,18 @@
     [Parameter]
     public string Type { get; set; } = "button";
 
-    private string GetButtonStyle()
-    {
-        return Style.ToString().ToLowerInvariant(); // Primary => primary
-    }
+    private string GetButtonStyle => Style.ToString().ToLowerInvariant();
 
-    private string GetCssClass()
-    {
-        return $"btn btn-{GetButtonStyle()} {GetButtonSize()} {CssClass}";
-    }
+    private string GetCssClass => $"btn btn-{GetButtonStyle} {GetButtonSize} {CssClass}";
 
     // Convert Button Sizes to xm, sm, md, lg, xl
-    private string GetButtonSize()
+    private string GetButtonSize => Size switch
     {
-        return Size switch
-        {
-            ButtonSize.ExtraSmall => "btn-xs",
-            ButtonSize.Small => "btn-sm",
-            ButtonSize.Medium => string.Empty,
-            ButtonSize.Large => "btn-lg",
-            _ => string.Empty
-        };
-    }
+        ButtonSize.ExtraSmall => "btn-xs",
+        ButtonSize.Small => "btn-sm",
+        ButtonSize.Medium => string.Empty,
+        ButtonSize.Large => "btn-lg",
+        _ => string.Empty
+    };
 
 }
