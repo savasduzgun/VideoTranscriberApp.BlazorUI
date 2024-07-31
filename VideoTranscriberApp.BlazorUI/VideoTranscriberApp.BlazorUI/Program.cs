@@ -1,3 +1,5 @@
+using OpenAI.Extensions;
+using VideoTranscriberApp.BlazorUI.Components;
 using VideoTranscriberApp.BlazorUI.Client.Pages;
 using VideoTranscriberApp.BlazorUI.Components;
 
@@ -7,6 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5220/api/") });
+
+builder.Services.AddControllers();
+
+var openAIApiKey = builder
+    .Configuration
+    .GetSection("OpenAIApiKey")
+    .Value;
+
+builder.Services.AddOpenAIService(settings => settings.ApiKey = openAIApiKey);
 
 var app = builder.Build();
 
@@ -31,5 +44,7 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(VideoTranscriberApp.BlazorUI.Client._Imports).Assembly);
+
+app.MapControllers();
 
 app.Run();

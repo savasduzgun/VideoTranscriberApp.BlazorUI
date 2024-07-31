@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VideoTranscriberApp.BlazorUI.Client\VideoTranscriberApp.BlazorUI.Client.csproj" />
+    <PackageReference Include="Betalgo.OpenAI" Version="8.6.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.5" />
   </ItemGroup>
 
