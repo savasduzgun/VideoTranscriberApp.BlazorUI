@@ -1,6 +1,7 @@
 ﻿@using System.Text
 @using BlazorDownloadFile
 @using VideoTranscriberApp.BlazorUI.Client.Models
+@using VideoTranscriberApp.BlazorUI.Client.Pages
 @inject IBlazorDownloadFileService DownloadFileService
 
 <div class="w-full">
@@ -72,8 +73,6 @@
         byte[] textBytes = Encoding.UTF8.GetBytes(tab.Text);
 
         await memoryStream.WriteAsync(textBytes, 0, textBytes.Length);
-
-        memoryStream.Position = 0;
 
         await DownloadFileService.DownloadFile($"{tab.Language}.srt", memoryStream, "text/plain");
     }
