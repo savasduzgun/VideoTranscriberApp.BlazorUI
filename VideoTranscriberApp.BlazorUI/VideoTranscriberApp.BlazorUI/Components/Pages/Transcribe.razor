@@ -6,9 +6,8 @@
 @using System.Text.Json
 @using VideoTranscriberApp.BlazorUI.Client.Components
 @using VideoTranscriberApp.BlazorUI.Client.Enums
-@using VideoTranscriberApp.BlazorUI.Models
+@using VideoTranscriberApp.BlazorUI.Client.Models
 @using VideoTranscriberApp.BlazorUI.Services
-@using static VideoTranscriberApp.BlazorUI.Client.Pages.WasmTranscribe
 
 @inject TranscriptionManager TranscriptionManager
 
@@ -72,10 +71,7 @@
     {
         <div class="mt-8">
             <h2 class="text-2xl font-bold mb-4">Transcriptions</h2>
-            @foreach (var transcription in Transcriptions)
-            {
-               <TranscriptionCard Language="@transcription.Language" Text="@transcription.Text" @rendermode="InteractiveWebAssembly"></TranscriptionCard>
-            }
+            <TranslatedTranscribeTabs Tabs="Transcriptions" @rendermode="InteractiveWebAssembly"/>
         </div>
     }
 </div>
@@ -88,7 +84,7 @@
     private bool IsUploading { get; set; } = false;
     private string ErrorMessage { get; set; } = string.Empty;
     private string SuccessMessage { get; set; } = string.Empty;
-    private List<Models.TranscriptionModel> Transcriptions { get; set; } = [];
+    private List<TranscriptionModel> Transcriptions { get; set; } = [];
 
     // private async Task UploadVideo()
     // {
@@ -151,17 +147,16 @@
 
         try
         {
-           var response = await TranscriptionManager.UploadAsync(model);
+            var cts = new CancellationTokenSource();
 
-            if (response.IsSuccessStatusCode)
-            {
-                Transcriptions = await response.Content.ReadFromJsonAsync<List<TranscriptionModel>>() ?? [];
-                SuccessMessage = "Video uploaded and transcribed successfully!";
-            }
-            else
-            {
-                ErrorMessage = $"Error: {response.StatusCode} - {await response.Content.ReadAsStringAsync()}";
-            }
+            var request = VideoUploadModel.ToRequest(model);
+
+            var response = await TranscriptionManager.UploadAsync(request, cts.Token);
+
+            Transcriptions = response;
+
+            SuccessMessage = "Video uploaded and transcribed successfully!";
+
         }
         catch (Exception ex)
         {
