@@ -6,7 +6,7 @@ using VideoTranscriberApp.BlazorUI.Client.Models;
 using Xabe.FFmpeg;
 using VideoTranscriberApp.BlazorUI.Client.Models;
 
-namespace YA.VideoTranscriberApp.BlazorUI.Controllers
+namespace VideoTranscriberApp.BlazorUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
